@@ -13,28 +13,29 @@ import org.apache.commons.lang3.StringUtils;
 import org.jblas.DoubleMatrix;
 
 public class CharText {
+
     private static final String LOCAL_DATA_PATH = "./data/";
 
     private Map<String, Integer> charIndex = new HashMap<>();
     private Map<Integer, String> indexChar = new HashMap<>();
     private Map<String, DoubleMatrix> charVector = new HashMap<>();
     private List<String> sequence = new ArrayList<>();
-    
+
     public CharText() {
         init();
     }
-    
+
     public void init() {
         loadData();
         buildDistributedRepresentations();
     }
-    
+
     private void loadData() {
         try (BufferedReader reader = new BufferedReader(
-                new FileReader(new File(LOCAL_DATA_PATH + "toy.txt")))) {
+                new FileReader(new File(LOCAL_DATA_PATH + "shakespeare.txt")))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                if(!StringUtils.isBlank(line)) {
+                if (!StringUtils.isBlank(line)) {
                     sequence.add(line.toLowerCase());
                     for (char c : line.toLowerCase().toCharArray()) {
                         String key = String.valueOf(c);
@@ -46,9 +47,9 @@ public class CharText {
                 }
             }
         } catch (IOException e) {
-        }        
+        }
     }
-    
+
     private void buildDistributedRepresentations() {
         for (String c : charIndex.keySet()) {
             DoubleMatrix xt = DoubleMatrix.zeros(1, charIndex.size());
@@ -56,7 +57,7 @@ public class CharText {
             charVector.put(c, xt);
         }
     }
-    
+
     public Map<String, Integer> getCharIndex() {
         return charIndex;
     }
@@ -68,7 +69,7 @@ public class CharText {
     public List<String> getSequence() {
         return sequence;
     }
-    
+
     public Map<Integer, String> getIndexChar() {
         return indexChar;
     }

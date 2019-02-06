@@ -9,7 +9,6 @@ import org.jblas.DoubleMatrix;
 import com.lipiji.mllib.dataset.CharText;
 import com.lipiji.mllib.layers.MatIniter;
 import com.lipiji.mllib.layers.MatIniter.Type;
-import com.lipiji.mllib.rnn.gru.GRU;
 import com.lipiji.mllib.utils.LossFunction;
 
 // Language Model using GRU

@@ -5,6 +5,7 @@ import java.util.Random;
 import org.jblas.DoubleMatrix;
 
 public class MatIniter {
+
     private static Random random = new Random();
 
     public enum Type {
@@ -21,11 +22,11 @@ public class MatIniter {
         this.miu = miu;
         this.sigma = sigma;
     }
-    
+
     public DoubleMatrix uniform(int rows, int cols) {
         return DoubleMatrix.rand(rows, cols).mul(2 * scale).sub(scale);
     }
-    
+
     public DoubleMatrix gaussian(int rows, int cols) {
         DoubleMatrix m = new DoubleMatrix(rows, cols);
         for (int i = 0; i < m.length; i++) {

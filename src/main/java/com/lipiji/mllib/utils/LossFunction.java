@@ -18,7 +18,7 @@ public class LossFunction {
         return -q.mul(MatrixFunctions.log(p)).sum()
                 + (q.add(-1).mul(MatrixFunctions.log(p.mul(-1).add(1)))).sum();
     }
-    
+
     public static double getMeanBinaryCrossEntropy(DoubleMatrix P, DoubleMatrix Q) {
         double e = 0;
         if (P.rows == Q.rows) {
@@ -31,7 +31,7 @@ public class LossFunction {
         }
         return e;
     }
-    
+
     private static double getCategoricalCrossEntropy(DoubleMatrix p, DoubleMatrix q) {
         for (int i = 0; i < q.length; i++) {
             if (q.get(i) == 0) {
@@ -40,7 +40,7 @@ public class LossFunction {
         }
         return -p.mul(MatrixFunctions.log(q)).sum();
     }
-    
+
     public static double getMeanCategoricalCrossEntropy(DoubleMatrix P, DoubleMatrix Q) {
         double e = 0;
         if (P.rows == Q.rows) {
@@ -61,7 +61,6 @@ public class LossFunction {
      * public static double getKLDivergence(DoubleMatrix p, DoubleMatrix q) {
      * return MatrixFunctions.log(p.div(q)).mul(p).sum(); }
      */
-    
     public static double getMSE(DoubleMatrix P, DoubleMatrix Q) {
         double e = 0;
         if (P.rows == Q.rows) {
@@ -74,7 +73,7 @@ public class LossFunction {
         }
         return e;
     }
-    
+
     public static double getMSERecSys(DoubleMatrix P, DoubleMatrix Q) {
         double e = 0;
         double n = 0;
